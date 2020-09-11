@@ -6,7 +6,7 @@ import Form from '../forms/form'
 import "./App.css";
 
 function App(props){
-  const {fetchSmurfs, loadingSmurfs, errorMessage} = props
+  const {fetchSmurfs, postSmurfs, loadingSmurfs, errorMessage} = props
 
   useEffect(() => {
     fetchSmurfs();

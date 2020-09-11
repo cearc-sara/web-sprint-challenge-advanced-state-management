@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import {connect} from 'react-redux';
 import SmurfsList from './smurfsList';
 import {fetchSmurfs} from '../actions/index'
+import Form from '../forms/form'
 import "./App.css";
 
 function App(props){
@@ -11,12 +12,13 @@ function App(props){
     fetchSmurfs();
   }, [fetchSmurfs])
 
-  
+
     return (
       <div className="App">
         <h1>Welcome to Smurf Village</h1>
           {!loadingSmurfs ? (<SmurfsList/>) : (<div className='loading'>Searching for Smurfs</div>)}
           {errorMessage !== "" ? <div>{errorMessage}</div> : null}
+          <Form/>
       </div>
     );
 

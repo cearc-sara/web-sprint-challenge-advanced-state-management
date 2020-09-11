@@ -12,9 +12,7 @@ function App(props){
     fetchSmurfs();
   }, [fetchSmurfs])
 
-  useEffect(() => {
-    postSmurfs();
-  },[postSmurfs])
+  
 
 
     return (

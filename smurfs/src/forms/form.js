@@ -26,6 +26,7 @@ export default function Form() {
             age: formValues.age.trim(),
             height: formValues.height.trim(),
         }
+        
         postSmurfs(newSmurf)
     }
 
@@ -41,10 +42,10 @@ export default function Form() {
 
 
     return(
-        <form >
+        <form onSubmit={onSubmit}>
             <div>
                 <h3>Add a new Smurf to the Village</h3>
-                <button onSubmit={onSubmit}>Add Smurf</button>
+                <button >Add Smurf</button>
             </div>
             <div>
                 <h4>Smurf Info</h4>

@@ -25,18 +25,19 @@ export const fetchSmurfs = () => {
 }
 
 export const postSmurfs = (newSmurf) => {
-    return(dispatch) => {
-        dispatch({type: POST_SMURFS});
+    // return(dispatch) => {
+    //     dispatch({type: POST_SMURFS});
         axios.post('http://localhost:3333/smurfs', newSmurf)
         
         .then((res) => {
             console.log('post', res.data)
-            dispatch({type: POST_SMURFS_SUCCESS,
-            payload: res.data})
+            // dispatch({type: POST_SMURFS_SUCCESS,
+            // payload: res.data})
         })
         .catch((err) => {
-            dispatch({type: POST_SMURFS_ERROR,
-            payload: {message: "Whoops! Looks like your new Smurf didn't want to join the Village!"}})
+            console.log(err)
+            // dispatch({type: POST_SMURFS_ERROR,
+            // payload: {message: "Whoops! Looks like your new Smurf didn't want to join the Village!"}})
         })
-    }
+    // }
 }

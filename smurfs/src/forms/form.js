@@ -41,7 +41,7 @@ export default function Form() {
 
 
     return(
-        <form>
+        <form >
             <div>
                 <h3>Add a new Smurf to the Village</h3>
                 <button onSubmit={onSubmit}>Add Smurf</button>

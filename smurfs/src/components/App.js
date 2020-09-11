@@ -14,7 +14,7 @@ function App(props){
 
   useEffect(() => {
     postSmurfs();
-  },[])
+  },[postSmurfs])
 
 
     return (

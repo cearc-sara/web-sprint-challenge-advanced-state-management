@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import {connect} from 'react-redux';
 import SmurfsList from './smurfsList';
-import {fetchSmurfs, postSmurfs} from '../actions/index'
+import {fetchSmurfs} from '../actions/index'
 import Form from '../forms/form'
 import "./App.css";
 
 function App(props){
-  const {fetchSmurfs, postSmurfs, loadingSmurfs, errorMessage} = props
+  const {fetchSmurfs, loadingSmurfs, errorMessage} = props
 
   useEffect(() => {
     fetchSmurfs();
@@ -32,4 +32,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, {fetchSmurfs, postSmurfs})(App);
+export default connect(mapStateToProps, {fetchSmurfs})(App);

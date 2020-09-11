@@ -1,20 +1,33 @@
+import Axios from 'axios';
 import React, {useState} from 'react';
-import {postSmurfs} from '../actions/index'
+import {connect} from 'react-redux'
+
 
 const initialFormValues = {
     name: '',
-    age: '',
+    age: 200,
     height:''
 }
 
 
 
-const initialDisabled = true
 
-export default function Form() {
+
+function Form(props) {
     const [formValues, setFormValues] = useState(initialFormValues)
-    const [disabled, setDisabled] = useState(initialDisabled)
-
+  
+    const postSmurfs = (newSmurf) => {
+        Axios.post('http://localhost:3333/smurfs', newSmurf)
+        .then(res => {
+            console.log(res.data)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+        .finally(() => {
+            setFormValues(initialFormValues)
+        })
+    }
 
     const inputChange = (name, value) => {
         setFormValues({...formValues, [name]: value})
@@ -30,10 +43,7 @@ export default function Form() {
         postSmurfs(newSmurf)
     }
 
-    const onSubmit = e => {
-        e.preventDefault()
-        submit()
-    }
+   
 
     const onInputChange = e => {
         const {name, value} = e.target
@@ -42,7 +52,7 @@ export default function Form() {
 
 
     return(
-        <form onSubmit={onSubmit}>
+        <form onSubmit={submit}>
             <div>
                 <h3>Add a new Smurf to the Village</h3>
                 <button >Add Smurf</button>
@@ -52,7 +62,7 @@ export default function Form() {
 
                 <label>Name&nbsp;
                     <input
-                    value={formValues.name}
+                    value={props.smurfs.name}
                     onChange={onInputChange}
                     name='name'
                     type='text'
@@ -61,7 +71,7 @@ export default function Form() {
 
                 <label>Age&nbsp;
                     <input
-                    value={formValues.age}
+                    value={props.smurfs.age}
                     onChange={onInputChange}
                     name='age'
                     type='text'
@@ -70,7 +80,7 @@ export default function Form() {
 
                 <label>Height&nbsp;
                     <input
-                    value={formValues.height}
+                    value={props.smurfs.height}
                     onChange={onInputChange}
                     name='height'
                     type='text'
@@ -80,3 +90,10 @@ export default function Form() {
         </form>
     )
 }
+function mapStateToProps(state) {
+    return{
+        smurfs: state.smurfs,
+    }
+}
+
+export default connect(mapStateToProps, {})(Form);

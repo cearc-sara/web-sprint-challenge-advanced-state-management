@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import {connect} from 'react-redux';
 import SmurfsList from './smurfsList';
-import {fetchSmurfs} from '../actions/index'
+import {fetchSmurfs, postSmurfs} from '../actions/index'
 import Form from '../forms/form'
 import "./App.css";
 
@@ -11,6 +11,10 @@ function App(props){
   useEffect(() => {
     fetchSmurfs();
   }, [fetchSmurfs])
+
+  useEffect(() => {
+    postSmurfs();
+  },[])
 
 
     return (
@@ -30,4 +34,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, {fetchSmurfs})(App);
+export default connect(mapStateToProps, {fetchSmurfs, postSmurfs})(App);
